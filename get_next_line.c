@@ -6,7 +6,7 @@
 /*   By: gkryszcz <gkryszcz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:51:32 by gkryszcz          #+#    #+#             */
-/*   Updated: 2025/04/05 12:03:35 by gkryszcz         ###   ########.fr       */
+/*   Updated: 2025/04/05 14:03:04 by gkryszcz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	*ft_update_stash(char *stash)
 		i++;
 	if (!stash[i])
 		return (cleanup(stash, NULL, 1));
-	new_stash = malloc((ft_strlen(stash) - i) * sizeof(char));
+	new_stash = malloc((ft_strlen(stash) - i + 1) * sizeof(char));
 	if (!new_stash)
 		return (cleanup(stash, NULL, 1));
 	j = 0;
@@ -103,7 +103,6 @@ char	*get_next_line(int fd)
 	static char	*stash;
 	char		*line;
 
-	stash = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	stash = ft_read_to_stash(fd, stash);
