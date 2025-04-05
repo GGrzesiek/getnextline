@@ -6,7 +6,7 @@
 /*   By: ggrzesiek <ggrzesiek@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 11:06:58 by ggrzesiek         #+#    #+#             */
-/*   Updated: 2025/04/05 07:10:15 by ggrzesiek        ###   ########.fr       */
+/*   Updated: 2025/04/05 10:58:29 by ggrzesiek        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ char	*ft_strchr(const char *s, int c)
 }
 char	*ft_strjoin(char *s1, char *s2)
 {
-	size_t	size;
 	char	*big;
 	size_t	i;
 	size_t	j;
@@ -53,37 +52,40 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	if(!s2)
 		return (s1);
-	size = ft_strlen(s1) + ft_strlen(s2) + 1;
-	big = (char *)malloc(size);
+	big = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!big)
 	{
-		free((char *)s1);
+		free(s1);
 		return (NULL);
 	}
 	i = -1;
+	j = -1;
 	while (s1[++i])
 		big[i] = s1[i];
-	j = -1;
 	while(s2[++j])
-	big[i + j] = s2[j];
+		big[i + j] = s2[j];
 	big[i + j] = '\0';
 	free(s1);
 	return (big);
 }
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+char  *cleanup(char *stash, char *buffer,int mode)
 {
-	size_t	src_len;
-	size_t	i;
-
-	src_len = ft_strlen(src);
-	i = 0;
-	if (size == 0)
-		return (src_len);
-	while (src[i] != '\0' && i < size - 1)
+	if (mode == 1)
 	{
-		dst[i] = src[i];
-		i++;
+		if (stash)
+			free(stash);
 	}
-	dst[i] = '\0';
-	return (src_len);
+	else if (mode == 2)
+	{
+		if (buffer)
+			free(buffer);
+	}
+	else if (mode == 3)
+	{
+		if (stash)
+			free(stash);
+		if (buffer)
+			free(buffer);
+	}
+	return (NULL);
 }
