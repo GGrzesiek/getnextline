@@ -1,3 +1,7 @@
 .vscode
 tekst
 main.c
+gnlTester
+*.o
+*.a
+*.out
