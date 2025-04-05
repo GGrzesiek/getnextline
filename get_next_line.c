@@ -6,7 +6,7 @@
 /*   By: gkryszcz <gkryszcz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:51:32 by gkryszcz          #+#    #+#             */
-/*   Updated: 2025/04/05 14:03:04 by gkryszcz         ###   ########.fr       */
+/*   Updated: 2025/04/05 14:47:06 by gkryszcz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,3 +112,25 @@ char	*get_next_line(int fd)
 	stash = ft_update_stash(stash);
 	return (line);
 }
+
+/*int main()
+{
+	int fd;
+	char *line;
+
+	fd = open("test", O_RDONLY);
+	if (fd == -1)
+	{
+		perror("error opening file");
+		return(1);
+	}
+	while((line = get_next_line(fd)) != NULL)
+	{
+		printf("%s",line);
+		free(line);
+	}
+
+	close(fd);
+
+	return(0);
+}*/
